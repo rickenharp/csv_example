@@ -31,5 +31,14 @@ describe CSVExportService do
       expected_csv += "adidas shirts\tadidas\tshirts\n"
       expect(export_service.call).to eq(expected_csv)
     end
+
+    it "returns the CSV for a subset of fields" do
+      export_service = CSVExportService.new(exportable, [:value, :brand])
+      expected_csv  = "value\tbrand\n"
+      expected_csv += "adidas shoes\tadidas\n"
+      expected_csv += "adidas shirts\tadidas\n"
+      expect(export_service.call).to eq(expected_csv)
+      
+    end
   end
 end
