@@ -26,6 +26,12 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails", "~> 4.2.1"
   gem "capybara"
+  gem "faker"
+  gem "pry-rails"
+end
+
+group :test do
+  gem "timecop", "~> 0.6.2.2"
 end
 
 
