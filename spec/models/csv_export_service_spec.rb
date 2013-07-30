@@ -47,5 +47,13 @@ describe CSVExportService do
       expected_csv += "adidas\tadidas shirts\n"
       expect(export_service.call).to eq(expected_csv)
     end
+
+    it "ignores unknown fields" do
+      export_service = CSVExportService.new(exportable, [:foobar, :brand, :value])
+      expected_csv  = "brand\tvalue\n"
+      expected_csv += "adidas\tadidas shoes\n"
+      expected_csv += "adidas\tadidas shirts\n"
+      expect(export_service.call).to eq(expected_csv)
+    end
   end
 end
