@@ -26,7 +26,7 @@ class CSVExportService
     if @wanted_fields.empty?
       @exportable.columns_hash.keys
     else
-      @exportable.columns_hash.keys & @wanted_fields
+      @wanted_fields & @exportable.columns_hash.keys
     end
   end
 

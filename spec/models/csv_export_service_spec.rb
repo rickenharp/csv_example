@@ -38,7 +38,14 @@ describe CSVExportService do
       expected_csv += "adidas shoes\tadidas\n"
       expected_csv += "adidas shirts\tadidas\n"
       expect(export_service.call).to eq(expected_csv)
-      
+    end
+
+    it "returns the CSV for a subset in the given order" do
+      export_service = CSVExportService.new(exportable, [:brand, :value])
+      expected_csv  = "brand\tvalue\n"
+      expected_csv += "adidas\tadidas shoes\n"
+      expected_csv += "adidas\tadidas shirts\n"
+      expect(export_service.call).to eq(expected_csv)
     end
   end
 end
